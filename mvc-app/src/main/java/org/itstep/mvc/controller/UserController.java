@@ -31,6 +31,12 @@ public class UserController {
 
         Page<User> page = userService.pagination(pageNo, pageSize, sortField, sortDir);
         List<User> listUsers = page.getContent();
+        listUsers.forEach( user -> {
+            System.out.println("USER " + user.getEmail() + "    -------- >  ");
+            user.getRoles().forEach( role -> {
+                System.out.println(role.getName());
+            });
+        });
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());

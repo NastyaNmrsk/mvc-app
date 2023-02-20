@@ -1,9 +1,6 @@
 package org.itstep.mvc.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +13,8 @@ import java.util.Set;
 @Entity
 @Table(name = "roles")
 public class Role {
+    @Id
+    @GeneratedValue
     private int id;
     @Column(name = "name")
     private String name;
@@ -23,4 +22,5 @@ public class Role {
     private String description;
     @ManyToMany(mappedBy = "roles")
     Set<User> users;
+
 }
